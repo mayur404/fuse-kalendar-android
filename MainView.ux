@@ -1,0 +1,1100 @@
+<App Theme="Basic" Background="#e6e6e6">
+	<!--SystemSounds ux:Global="SystemSounds" /-->
+	<Font File="Assets/fonts/gotham_bold.otf" ux:Global="gBold" />
+  <Font File="Assets/fonts/gotham_medium.otf" ux:Global="gMedium" />
+	<StatusBarBackground Dock="Top"/>
+	<!--SystemSounds ux:Global="SystemSounds"/-->
+	<SystemSounds ux:Global="SystemSounds"/>
+	<JavaScript File="main.js"/>
+	<JavaScript>
+
+	</JavaScript>
+<DockPanel>
+	<PageControl ux:Name="navigation" Active="home">
+
+
+		<!-- Home Page  -->
+
+
+		<Page ux:Name="home" Background="#000">
+			<Image File="Assets/HomeCover.png" Layer="Background" StretchMode="UniformToFill" Opacity="0.65" />
+			<ScrollView Width="90%" Alignment="TopCenter" Height="100%">
+				<StackPanel>
+					<Panel Height="350" Alignment="Center" Width="100%">
+						<StackPanel ux:Name="homeTitle">
+							<Text FontSize="28" Font="gBold" TextAlignment="Center" TextColor="#fff" Value="{dateTitle}" Margin="0,160,0,0"></Text>
+							<Text FontSize="18" Font="gMedium" TextAlignment="Center" Opacity="0.8" TextColor="#fff" Value="don't miss a thing, swipe!" Margin="0,15,0,0"></Text>
+							<Panel ux:Name="curiousBtn" Width="100%" Height="50"  Margin="0,30,0,0">
+							<Text  Alignment="VerticalCenter" FontSize="16" Font="gBold" Padding="0,0,0,0" TextAlignment="Center" TextColor="#fff">WHAT'S UPCOMING</Text>
+							<Rectangle Width="70%" Height="100%" Fill="#FCCC1C" Alignment="Center" CornerRadius="100"></Rectangle>
+							<WhilePressed>
+									<Change curiousBtn.Opacity="0.9" Duration="0.1" Easing="CircularIn" />
+							</WhilePressed>
+							<Clicked>
+									 <Set stateGroupHome.Active="homeL1"/>
+							</Clicked>
+							</Panel>
+						</StackPanel>
+					</Panel>
+						<Panel ux:Name="homeContent" Width="100%" Height="50">
+							<Text  Alignment="VerticalCenter" FontSize="16" Font="gMedium" Padding="20,0,0,0" TextAlignment="Left" TextColor="#212121" Opacity="0.5">track your favourites</Text>
+							<Rectangle Width="100%" Height="50" Fill="#fff" CornerRadius="5"/>
+						</Panel>
+
+						<ScrollView ux:Name="homeContentScroll" Height="550" Margin="0,-10,0,0" Background="#fff" CachingMode="Optimized" IsEnabled="false" Padding="0,0,0,50">
+						<StackPanel>
+							<Each Items="{pins}">
+							<Panel ux:Name="homeItem" Background="#F5F5F5" Height="110" Margin="0,0,0,0" >
+								<Text  Alignment="TopLeft" FontSize="15" Font="gMedium" Padding="20,40,90,0" TextAlignment="Left" TextColor="#212121" Value="{title}"></Text>
+								<Text  Alignment="TopLeft" FontSize="14" Font="gMedium" Padding="20,70,0,0" TextAlignment="Left" TextColor="#212121" Value="{daysRemaining}" Opacity="0.5"></Text>
+										<Match Value="{type}">
+											<Case String="tv">
+												 <Panel Margin="0,35,20,0"  Width="75" Height="25" Alignment="TopRight" >
+													<Text FontSize="13" Font="gBold" TextColor="#ffffff" Opacity="0.9"  Value="TV" TextAlignment="Center" Alignment="VerticalCenter"></Text>
+													<Rectangle Fill="#FCCC1C" Width="100%" Height="100%" CornerRadius="100"></Rectangle>
+												 </Panel>
+											</Case>
+										<Case String="movies">
+											 <Panel Margin="0,35,20,0"  Width="75" Height="25" Alignment="TopRight" >
+												<Text FontSize="13" Font="gBold" TextColor="#ffffff" Opacity="0.9"  Value="MOVIE" TextAlignment="Center" Alignment="VerticalCenter"></Text>
+												<Rectangle Fill="#FCCC1C" Width="100%" Height="100%" CornerRadius="100"></Rectangle>
+											 </Panel>
+										</Case>
+										<Case String="sport">
+											 <Panel Margin="0,35,20,0"  Width="75" Height="25" Alignment="TopRight" >
+												<Text FontSize="13" Font="gBold" TextColor="#ffffff" Opacity="0.9"  Value="SPORT" TextAlignment="Center" Alignment="VerticalCenter"></Text>
+												<Rectangle Fill="#FCCC1C" Width="100%" Height="100%" CornerRadius="100"></Rectangle>
+											</Panel>
+										</Case>
+										<Case String="holiday">
+											 <Panel Margin="0,35,20,0"  Width="75" Height="25" Alignment="TopRight" >
+												<Text FontSize="13" Font="gBold" TextColor="#ffffff" Opacity="0.9"  Value="HOLIDAY" TextAlignment="Center" Alignment="VerticalCenter"></Text>
+												<Rectangle Fill="#FCCC1C" Width="100%" Height="100%" CornerRadius="100"></Rectangle>
+											</Panel>
+										</Case>
+									</Match>
+								<Rectangle Alignment="Bottom" Width="100%" Height="1" Background="#e6e6e6"/>
+								<WhilePressed>
+										<Change homeItem.Background="#E6E6E6"/>
+								</WhilePressed>
+							</Panel>
+							</Each>
+							  <Panel ux:Name="homeItem5" Background="#F5F5F5" Height="110" Margin="0,0,0,0">
+									<Text  Alignment="TopLeft" FontSize="15" Font="gMedium" Padding="20,40,90,0" TextAlignment="Left" TextColor="#212121" Value="Add and Track Favourites"></Text>
+									<Text  Alignment="TopLeft" FontSize="14" Font="gMedium" Padding="20,70,0,0" TextAlignment="Left" TextColor="#212121" Value="visit through and add your favourites" Opacity="0.5"></Text>
+									<Rectangle Alignment="Bottom" Width="100%" Height="1" Background="#e6e6e6"/>
+								</Panel>
+
+							<Panel  Width="100%" Height="50">
+								<Text  Alignment="VerticalCenter" FontSize="16" Font="gMedium" Padding="20,0,0,0" TextAlignment="Left" TextColor="#212121" Opacity="0.5">quick links</Text>
+								<Rectangle Width="100%" Height="50" Fill="#fff" CornerRadius="5"/>
+							</Panel>
+							<Panel ux:Name="homeItem0" Background="#F5F5F5" Height="110" Margin="0,0,0,0">
+								<Text  Alignment="TopLeft" FontSize="15" Font="gMedium" Padding="20,40,90,0" TextAlignment="Left" TextColor="#212121" Value="Movies"></Text>
+								<Text  Alignment="TopLeft" FontSize="14" Font="gMedium" Padding="20,70,0,0" TextAlignment="Left" TextColor="#212121" Value="in theaters this year" Opacity="0.5"></Text>
+								<Panel Margin="0,35,20,0"  Width="75" Height="25" Alignment="TopRight" >
+								 <Text FontSize="13" Font="gBold" TextColor="#ffffff" Opacity="0.9"  Value="51" TextAlignment="Center" Alignment="VerticalCenter"></Text>
+								 <Rectangle Fill="#FCCC1C" Width="100%" Height="100%" CornerRadius="100"></Rectangle>
+							 </Panel>
+								<Rectangle Alignment="Bottom" Width="100%" Height="1" Background="#e6e6e6"/>
+								<WhilePressed>
+										<Change homeItem0.Background="#E6E6E6"/>
+								</WhilePressed>
+								<Clicked>
+										<NavigateTo Target="movies"/>
+								</Clicked>
+							</Panel>
+							<Panel ux:Name="homeItem1" Background="#F5F5F5" Height="110" Margin="0,0,0,0">
+								<Text  Alignment="TopLeft" FontSize="15" Font="gMedium" Padding="20,40,90,0" TextAlignment="Left" TextColor="#212121" Value="Country Holidays"></Text>
+								<Text  Alignment="TopLeft" FontSize="14" Font="gMedium" Padding="20,70,0,0" TextAlignment="Left" TextColor="#212121" Value="public and national holidays" Opacity="0.5"></Text>
+								<Rectangle Alignment="Bottom" Width="100%" Height="1" Background="#e6e6e6"/>
+								<Panel Margin="0,35,20,0"  Width="75" Height="25" Alignment="TopRight" >
+								 <Text FontSize="13" Font="gBold" TextColor="#ffffff" Opacity="0.9"  Value="2174" TextAlignment="Center" Alignment="VerticalCenter"></Text>
+								 <Rectangle Fill="#FCCC1C" Width="100%" Height="100%" CornerRadius="100"></Rectangle>
+							 </Panel>
+								<WhilePressed>
+										<Change homeItem1.Background="#E6E6E6"/>
+								</WhilePressed>
+								<Clicked>
+										<NavigateTo Target="holidays"/>
+								</Clicked>
+							</Panel>
+							<Panel ux:Name="homeItem2" Background="#F5F5F5" Height="110" Margin="0,0,0,0">
+								<Text  Alignment="TopLeft" FontSize="15" Font="gMedium" Padding="20,40,90,0" TextAlignment="Left" TextColor="#212121" Value="Television Series"></Text>
+								<Text  Alignment="TopLeft" FontSize="14" Font="gMedium" Padding="20,70,0,0" TextAlignment="Left" TextColor="#212121" Value="upcoming seasons and episodes" Opacity="0.5"></Text>
+								<Panel Margin="0,35,20,0"  Width="75" Height="25" Alignment="TopRight" >
+								 <Text FontSize="13" Font="gBold" TextColor="#ffffff" Opacity="0.9"  Value="238" TextAlignment="Center" Alignment="VerticalCenter"></Text>
+								 <Rectangle Fill="#FCCC1C" Width="100%" Height="100%" CornerRadius="100"></Rectangle>
+							 </Panel>
+								<Rectangle Alignment="Bottom" Width="100%" Height="1" Background="#e6e6e6"/>
+								<WhilePressed>
+										<Change homeItem2.Background="#E6E6E6"/>
+								</WhilePressed>
+								<Clicked>
+										<NavigateTo Target="tv"/>
+								</Clicked>
+							</Panel>
+							<Panel ux:Name="homeItem3" Background="#F5F5F5" Height="110" Margin="0,0,0,0">
+								<Text  Alignment="TopLeft" FontSize="15" Font="gMedium" Padding="20,40,90,0" TextAlignment="Left" TextColor="#212121" Value="Sports"></Text>
+								<Text  Alignment="TopLeft" FontSize="14" Font="gMedium" Padding="20,70,0,0" TextAlignment="Left" TextColor="#212121" Value="tournaments and championships" Opacity="0.5"></Text>
+								<Rectangle Alignment="Bottom" Width="100%" Height="1" Background="#e6e6e6"/>
+								<Panel Margin="0,35,20,0"  Width="75" Height="25" Alignment="TopRight" >
+								 <Text FontSize="13" Font="gBold" TextColor="#ffffff" Opacity="0.9"  Value="296" TextAlignment="Center" Alignment="VerticalCenter"></Text>
+								 <Rectangle Fill="#FCCC1C" Width="100%" Height="100%" CornerRadius="100"></Rectangle>
+							 </Panel>
+								<WhilePressed>
+										<Change homeItem3.Background="#E6E6E6"/>
+								</WhilePressed>
+								<Clicked>
+										<NavigateTo Target="sports"/>
+								</Clicked>
+							</Panel>
+					</StackPanel>
+					</ScrollView>
+				</StackPanel>
+				<ScrollingAnimation From="0" To="300">
+					<Move Target="homeTitle" Y="-0.5" RelativeTo="Size" />
+					<Change Target="homeTitle.Opacity" Value="0" Easing="QuadraticInOut"/>
+					<Change homeContentScroll.IsEnabled="true"/>
+				</ScrollingAnimation>
+			</ScrollView>
+
+			<StateGroup ux:Name="stateGroupHome">
+				<State ux:Name="homeL0">
+					<Move Target="homeTitle" Y="0" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.3" Delay="0.2"/>
+					<Move Target="homeContentScroll" Y="0" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.3" Delay="0.2"/>
+					<Move Target="homeContent" Y="0" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.3" Delay="0.2"/>
+					<Move Target="homePanel" X="0" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.5"/>
+
+				</State>
+				<State ux:Name="homeL1">
+					<Move Target="homeTitle" Y="-1.5" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.5" />
+					<Move Target="homeContentScroll" Y="1.5" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.5"/>
+					<Move Target="homeContent" Y="10" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.5"/>
+					<Move Target="homePanel" X="1" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.3" Delay="0.2" />
+				</State>
+		</StateGroup>
+
+
+
+
+			<Panel  ux:Name="homePanel" Width="100%" Height="100%" Layer="Overlay" Alignment="VerticalCenter" X="-100%">
+				<StackPanel Width="90%" Alignment="TopCenter" Height="100%" Padding="0,0,0,-150">
+						<Panel Height="150" >
+							<StackPanel >
+								<Text FontSize="25" Font="gBold" TextAlignment="Center" TextColor="#fff" Value="Upcoming Events" Margin="0,60,0,0">
+									<Clicked>
+											<Set stateGroupHome.Active="movieL0"/>
+									</Clicked>
+								</Text>
+								<Text FontSize="16" Font="gMedium" TextAlignment="Center" Opacity="0.8" TextColor="#fff" Value="combined events stream" Margin="0,15,0,0"></Text>
+							</StackPanel>
+						</Panel>
+						<StackPanel>
+							<Panel  Width="100%" Height="50">
+								<Text  Alignment="VerticalCenter" FontSize="16" Font="gMedium" Padding="0,0,0,0" TextAlignment="Center" TextColor="#212121" Opacity="0.5">coming up in couple of days</Text>
+								<Rectangle Width="100%" Height="50" Fill="#fff" CornerRadius="5"/>
+							</Panel>
+							<ScrollView Width="100%" Height="1000" Background="#fff" Margin="0,-10,0,0" Padding="0,0,0,570">
+								<StackPanel>
+									<Each Items="{up}">
+
+													<Panel ux:Name="homeItem" Background="#F5F5F5" Height="110" Margin="0,0,0,0">
+													<Text  Alignment="TopLeft" FontSize="15" Font="gMedium" Padding="20,40,90,0" TextAlignment="Left" TextColor="#212121" Value="{title}"></Text>
+													<Text  Alignment="TopLeft" FontSize="14" Font="gMedium" Padding="20,70,0,0" TextAlignment="Left" TextColor="#212121" Value="{daysRemaining}" Opacity="0.5"></Text>
+													<Panel Margin="0,35,20,0"  Width="75" Height="25" Alignment="TopRight" >
+														<Text FontSize="13" Font="gBold" TextColor="#ffffff" Opacity="0.9"  Value="{typeTitle}" TextAlignment="Center" Alignment="VerticalCenter"></Text>
+														<Rectangle Fill="#FCCC1C" Width="100%" Height="100%" CornerRadius="100"></Rectangle>
+													</Panel>
+													<Rectangle Alignment="Bottom" Width="100%" Height="1" Background="#e6e6e6"/>
+													<WhilePressed>
+															<Change homeItem.Background="#E6E6E6"/>
+													</WhilePressed>
+												</Panel>
+
+									</Each>
+								</StackPanel>
+							</ScrollView>
+						</StackPanel>
+					</StackPanel>
+
+			</Panel>
+
+
+
+
+
+
+			<OnBackButton>
+					<Set stateGroupHome.Active="homeL0"/>
+			</OnBackButton>
+
+		</Page>
+
+
+
+		<!-- Movies Page  -->
+
+
+
+		<Page ux:Name="movies" Background="#000">
+			<Image File="Assets/MoviesCover.png" Layer="Background" StretchMode="UniformToFill" Opacity="0.65" />
+			<ScrollView Width="90%" Alignment="TopCenter" Height="100%">
+				<StackPanel>
+					<Panel Height="350" Alignment="Center" Width="100%">
+						<StackPanel ux:Name="movieTitle">
+							<Text FontSize="28" Font="gBold" TextAlignment="Center" TextColor="#fff" Value="Movies" Margin="0,160,0,0"></Text>
+							<Text FontSize="18" Font="gMedium" TextAlignment="Center" Opacity="0.8" TextColor="#fff" Value="in theathers this year" Margin="0,15,0,0"></Text>
+							<Panel ux:Name="curiousBtn1" Width="100%" Height="50"  Margin="0,30,0,0">
+							<Text  Alignment="VerticalCenter" FontSize="16" Font="gBold" Padding="0,0,0,0" TextAlignment="Center" TextColor="#fff">UPCOMING RELEASES</Text>
+							<Rectangle Width="70%" Height="100%" Fill="#7122D8" Alignment="Center" CornerRadius="100"></Rectangle>
+							<WhilePressed>
+									<Change curiousBtn1.Opacity="0.9" Duration="0.1" Easing="CircularIn" />
+							</WhilePressed>
+							<Clicked>
+									 <Set stateGroupMovie.Active="movieL1"/>
+							</Clicked>
+							</Panel>
+						</StackPanel>
+					</Panel>
+						<Panel ux:Name="movieContent" Width="100%" Height="50">
+							<Text  Alignment="VerticalCenter" FontSize="16" Font="gMedium" Padding="20,0,0,0" TextAlignment="Left" TextColor="#212121" Opacity="0.5">movies releasing this year</Text>
+							<Rectangle Width="100%" Height="50" Fill="#fff" CornerRadius="5"/>
+						</Panel>
+
+						<ScrollView ux:Name="movieContentScroll" Height="550" Margin="0,-10,0,0" Background="#fff" CachingMode="Optimized" IsEnabled="false" Padding="0,0,0,50">
+						<StackPanel>
+							<Each Items="{movieDataMod}">
+							<Panel ux:Name="movieItem" Background="#F5F5F5" Height="110" Margin="0,0,0,0" >
+								<Text  Alignment="TopLeft" FontSize="15" Font="gMedium" Padding="20,40,90,0" TextAlignment="Left" TextColor="#212121" Value="{name}"></Text>
+								<Text  Alignment="TopLeft" FontSize="14" Font="gMedium" Padding="20,70,0,0" TextAlignment="Left" TextColor="#212121" Value="{date}" Opacity="0.5"></Text>
+								<Match Value="{status}">
+									<Case String="PAST">
+										<Panel Margin="0,35,20,0"  Width="60" Height="25" Alignment="TopRight" >
+											<Text FontSize="10" Font="gBold" TextColor="#ffffff" Opacity="0.9"  Value="PAST" TextAlignment="Center" Alignment="VerticalCenter"></Text>
+											<Rectangle Fill="#d13200" Width="100%" Height="100%" CornerRadius="100"></Rectangle>
+										</Panel>
+									</Case>
+									<Case String="LATER">
+										<Panel Margin="0,35,20,0"  Width="65" Height="25" Alignment="TopRight" >
+											<Text FontSize="10" Font="gBold" TextColor="#ffffff" Opacity="0.9"  Value="LATER" TextAlignment="Center" Alignment="VerticalCenter"></Text>
+											<Rectangle Fill="#40d47e" Width="100%" Height="100%" CornerRadius="100"></Rectangle>
+										</Panel>
+									</Case>
+									<Case String="SOON">
+										<Panel Margin="0,35,20,0"  Width="60" Height="25" Alignment="TopRight" >
+											<Text FontSize="10" Font="gBold" TextColor="#ffffff" Opacity="0.9"  Value="SOON" TextAlignment="Center" Alignment="VerticalCenter"></Text>
+											<Rectangle Fill="#FCCC1C" Width="100%" Height="100%" CornerRadius="100"></Rectangle>
+										</Panel>
+									</Case>
+								</Match>
+								<Rectangle Alignment="Bottom" Width="100%" Height="1" Background="#e6e6e6"/>
+								<WhilePressed>
+										<Change movieItem.Background="#E6E6E6"/>
+								</WhilePressed>
+								<Clicked>
+										<Callback Handler="{movieListHandler}"/>
+										<Set stateGroupMovie.Active="movieL2"/>
+								</Clicked>
+							</Panel>
+							</Each>
+					</StackPanel>
+					</ScrollView>
+				</StackPanel>
+				<ScrollingAnimation From="0" To="300">
+					<Move Target="movieTitle" Y="-0.5" RelativeTo="Size" />
+					<Change Target="movieTitle.Opacity" Value="0" Easing="QuadraticInOut"/>
+					<Change movieContentScroll.IsEnabled="true"/>
+				</ScrollingAnimation>
+			</ScrollView>
+
+			<StateGroup ux:Name="stateGroupMovie">
+				<State ux:Name="movieL0">
+					<Move Target="movieTitle" Y="0" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.3" Delay="0.2"/>
+					<Move Target="movieContentScroll" Y="0" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.3" Delay="0.2"/>
+					<Move Target="movieContent" Y="0" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.3" Delay="0.2"/>
+					<Move Target="moviePanel" X="0" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.5"/>
+					<Move Target="movieDetail" X="0" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.5"/>
+				</State>
+				<State ux:Name="movieL1">
+					<Move Target="movieTitle" Y="-1.5" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.5" />
+					<Move Target="movieContentScroll" Y="1.5" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.5"/>
+					<Move Target="movieContent" Y="10" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.5"/>
+					<Move Target="moviePanel" X="1" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.3" Delay="0.2" />
+				</State>
+				<State ux:Name="movieL2">
+					<Move Target="movieTitle" Y="-1.5" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.5" />
+					<Move Target="movieContentScroll" Y="1.5" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.5"/>
+					<Move Target="movieContent" Y="10" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.5"/>
+					<Move Target="movieDetail" X="1" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.3" Delay="0.2" />
+				</State>
+		</StateGroup>
+
+
+
+
+			<Panel  ux:Name="moviePanel" Width="100%" Height="100%" Layer="Overlay" Alignment="VerticalCenter" X="-100%">
+				<StackPanel Width="90%" Alignment="TopCenter" Height="100%" Padding="0,0,0,-150">
+						<Panel Height="150" >
+							<StackPanel >
+								<Text FontSize="25" Font="gBold" TextAlignment="Center" TextColor="#fff" Value="Upcoming Releases" Margin="0,60,0,0">
+									<Clicked>
+											<Set stateGroupMovie.Active="movieL0"/>
+									</Clicked>
+								</Text>
+								<Text FontSize="16" Font="gMedium" TextAlignment="Center" Opacity="0.8" TextColor="#fff" Value="" Margin="0,15,0,0"></Text>
+							</StackPanel>
+						</Panel>
+						<StackPanel>
+							<Panel  Width="100%" Height="50">
+								<Text  Alignment="VerticalCenter" FontSize="16" Font="gMedium" Padding="0,0,0,0" TextAlignment="Center" TextColor="#212121" Opacity="0.5">releases in the next 30 days</Text>
+								<Rectangle Width="100%" Height="50" Fill="#fff" CornerRadius="5"/>
+							</Panel>
+							<ScrollView Width="100%" Height="1000" Background="#fff" Margin="0,-10,0,0" Padding="0,0,0,570">
+								<StackPanel>
+									<Each Items="{movieDataMod}">
+										<Panel>
+										<Match Value="{status}">
+											<Case String="SOON">
+												<Panel ux:Name="movieItem" Background="#F5F5F5" Height="110" Margin="0,0,0,0">
+													<Text  Alignment="TopLeft" FontSize="15" Font="gMedium" Padding="20,40,90,0" TextAlignment="Left" TextColor="#212121" Value="{name}"></Text>
+													<Text  Alignment="TopLeft" FontSize="14" Font="gMedium" Padding="20,70,0,0" TextAlignment="Left" TextColor="#212121" Value="{date}" Opacity="0.5"></Text>
+													<Panel Margin="0,35,20,0"  Width="65" Height="25" Alignment="TopRight" >
+														<Text FontSize="10" Font="gBold" TextColor="#ffffff" Opacity="0.9"  Value="{daysTo}" TextAlignment="Center" Alignment="VerticalCenter"></Text>
+														<Rectangle Fill="#7122D8" Width="100%" Height="100%" CornerRadius="100"></Rectangle>
+													</Panel>
+													<Rectangle Alignment="Bottom" Width="100%" Height="1" Background="#e6e6e6"/>
+													<WhilePressed>
+															<Change movieItem.Background="#E6E6E6"/>
+													</WhilePressed>
+													<DoubleClicked>
+															<Callback Handler="{addNativeEvent}"/>
+													</DoubleClicked>
+												</Panel>
+											</Case>
+										</Match>
+										</Panel>
+									</Each>
+								</StackPanel>
+							</ScrollView>
+						</StackPanel>
+					</StackPanel>
+
+			</Panel>
+
+
+
+
+			<Panel  ux:Name="movieDetail" Width="100%" Height="100%" Layer="Overlay" Alignment="VerticalCenter" X="-100%">
+				<StackPanel Width="90%" Alignment="TopCenter" Height="100%" Padding="0,0,0,-150">
+						<Panel Height="210" >
+							<StackPanel >
+								<Text Width="100%" FontSize="25" Font="gBold" TextAlignment="Center" TextColor="#fff" Value="{mTitle}" TextWrapping="Wrap" Margin="0,60,0,0">
+									<Clicked>
+											<Set stateGroupMovie.Active="movieL0"/>
+									</Clicked>
+								</Text>
+								<Panel ux:Name="addPin" Width="100%" Height="50"  Margin="0,20,0,0" >
+								<Text ux:Name="pinContent3" Alignment="VerticalCenter" FontSize="16" Font="gBold" Padding="0,0,0,0" TextAlignment="Center" TextColor="#fff" Value="FAVOURITE"></Text>
+								<Rectangle Width="70%" Height="100%" Fill="#7122D8" Alignment="Center" CornerRadius="100"></Rectangle>
+								<WhilePressed>
+										<Change addPin.Opacity="0.9" Duration="0.1" Easing="CircularIn" />
+								</WhilePressed>
+								<Clicked>
+										 <Callback Handler="{pinHandler}"/>
+
+								</Clicked>
+								</Panel>
+							</StackPanel>
+						</Panel>
+						<StackPanel>
+							<Panel  Width="100%" Height="50">
+								<Text  Alignment="VerticalCenter" FontSize="16" Font="gMedium" Padding="0,0,0,0" TextAlignment="Center" TextColor="#212121" Opacity="0.5" Value="{mDate}"></Text>
+								<Rectangle Width="100%" Height="50" Fill="#fff" CornerRadius="5"/>
+							</Panel>
+							<ScrollView Width="100%" Height="1000" Background="#fff" Margin="0,-10,0,0" Padding="0,0,0,800">
+								<StackPanel>
+											<Panel ux:Name="movieItem" Background="#F5F5F5" Margin="0,0,0,0" Clicked="{addNativeEvent}">
+													<Text  Alignment="TopLeft" FontSize="15" Font="gMedium" Padding="20,40,90,0" TextAlignment="Left" TextColor="#212121" Value="Initial Release"></Text>
+													<Text  Alignment="TopLeft" FontSize="14" Font="gMedium" Padding="20,70,0,20" TextAlignment="Left" TextColor="#212121" Value="{mRelease}" Opacity="0.5"></Text>
+													<Text  Alignment="TopLeft" FontSize="13" Font="gMedium" Padding="20,100,0,20" TextAlignment="Left" TextColor="#212121" Value="" Opacity="0.8"></Text>
+
+													<Rectangle Alignment="Bottom" Width="100%" Height="1" Background="#e6e6e6"/>
+													<WhilePressed>
+															<Change movieItem.Background="#E6E6E6"/>
+													</WhilePressed>
+											</Panel>
+											<Panel Background="#F5F5F5" Margin="0,0,0,0">
+													<Text  Alignment="TopLeft" FontSize="15" Font="gMedium" Padding="20,40,90,0" TextAlignment="Left" TextColor="#212121" Value="Plot"></Text>
+													<Text  Alignment="TopLeft" FontSize="14" Font="gMedium" Padding="20,70,20,20" TextAlignment="Left" TextColor="#212121" TextWrapping="Wrap" Value="{mDesc}" Opacity="0.5"></Text>
+													<Rectangle Alignment="Bottom" Width="100%" Height="1" Background="#e6e6e6"/>
+											</Panel>
+											<Panel Background="#F5F5F5" Margin="0,0,0,0">
+													<Text  Alignment="TopLeft" FontSize="15" Font="gMedium" Padding="20,40,90,0" TextAlignment="Left" TextColor="#212121" Value="Director"></Text>
+													<Text  Alignment="TopLeft" FontSize="14" Font="gMedium" Padding="20,70,20,20" TextAlignment="Left" TextColor="#212121" TextWrapping="Wrap" Value="{mDirector}" Opacity="0.5"></Text>
+													<Rectangle Alignment="Bottom" Width="100%" Height="1" Background="#e6e6e6"/>
+											</Panel>
+											<Panel Background="#F5F5F5" Margin="0,0,0,0">
+													<Text  Alignment="TopLeft" FontSize="15" Font="gMedium" Padding="20,40,90,0" TextAlignment="Left" TextColor="#212121" Value="Producer"></Text>
+													<Text  Alignment="TopLeft" FontSize="14" Font="gMedium" Padding="20,70,20,20" TextAlignment="Left" TextColor="#212121" TextWrapping="Wrap" Value="{mProducer}" Opacity="0.5"></Text>
+													<Rectangle Alignment="Bottom" Width="100%" Height="1" Background="#e6e6e6"/>
+											</Panel>
+											<Panel Background="#F5F5F5" Margin="0,0,0,0">
+													<Text  Alignment="TopLeft" FontSize="15" Font="gMedium" Padding="20,40,90,0" TextAlignment="Left" TextColor="#212121" Value="Running Time"></Text>
+													<Text  Alignment="TopLeft" FontSize="14" Font="gMedium" Padding="20,70,20,20" TextAlignment="Left" TextColor="#212121" TextWrapping="Wrap" Value="{mRunningTime}" Opacity="0.5"></Text>
+													<Rectangle Alignment="Bottom" Width="100%" Height="1" Background="#e6e6e6"/>
+											</Panel>
+								</StackPanel>
+							</ScrollView>
+						</StackPanel>
+					</StackPanel>
+
+			</Panel>
+
+			<OnBackButton>
+					<Set stateGroupMovie.Active="movieL0"/>
+			</OnBackButton>
+
+		</Page>
+
+
+
+
+		<!-- Tv Page  -->
+
+
+		<Page ux:Name="tv" Background="#000">
+			<Image File="Assets/TvCover.png" Layer="Background" StretchMode="UniformToFill" Opacity="0.65" />
+			<ScrollView Width="90%" Alignment="TopCenter" Height="100%">
+				<StackPanel>
+					<Panel Height="350" Alignment="Center" Width="100%">
+						<StackPanel ux:Name="tvTitle">
+							<Text FontSize="28" Font="gBold" TextAlignment="Center" TextColor="#fff" Value="Television Shows" Margin="0,160,0,0"></Text>
+							<Text FontSize="18" Font="gMedium" TextAlignment="Center" Opacity="0.8" TextColor="#fff" Value="upcoming seasons and episodes" Margin="0,15,0,0"></Text>
+							<Panel ux:Name="curiousBtn2" Width="100%" Height="50"  Margin="0,30,0,0">
+							<Text  Alignment="VerticalCenter" FontSize="16" Font="gBold" Padding="0,0,0,0" TextAlignment="Center" TextColor="#fff">UPCOMING EPISODES</Text>
+							<Rectangle Width="70%" Height="100%" Fill="#E62878" Alignment="Center" CornerRadius="100"></Rectangle>
+							<WhilePressed>
+									<Change curiousBtn2.Opacity="0.9" Duration="0.1" Easing="CircularIn" />
+							</WhilePressed>
+							<Clicked>
+									 <Set stateGroupTv.Active="tvL1"/>
+							</Clicked>
+							</Panel>
+						</StackPanel>
+					</Panel>
+						<Panel ux:Name="tvContent" Width="100%" Height="50">
+							<Text  Alignment="VerticalCenter" FontSize="16" Font="gMedium" Padding="20,0,0,0" TextAlignment="Left" TextColor="#212121" Opacity="0.5">television shows this year</Text>
+							<Rectangle Width="100%" Height="50" Fill="#fff" CornerRadius="5"/>
+						</Panel>
+
+						<ScrollView ux:Name="tvContentScroll" Height="550" Margin="0,-10,0,0" Background="#fff" CachingMode="Optimized" IsEnabled="false" Padding="0,0,0,50">
+						<StackPanel>
+							<Each Items="{tvDataMod}">
+							<Panel ux:Name="tvItem" Background="#F5F5F5" Height="110" Margin="0,0,0,0">
+								<Text  Alignment="TopLeft" FontSize="15" Font="gMedium" Padding="20,40,90,0" TextAlignment="Left" TextColor="#212121" Value="{name}"></Text>
+								<Text  Alignment="TopLeft" FontSize="14" Font="gMedium" Padding="20,70,0,0" TextAlignment="Left" TextColor="#212121" Value="{season}" Opacity="0.5"></Text>
+								<Match Value="{status}">
+									<Case String="PAST">
+										<Panel Margin="0,35,20,0"  Width="60" Height="25" Alignment="TopRight" >
+											<Text FontSize="10" Font="gBold" TextColor="#ffffff" Opacity="0.9"  Value="PAST" TextAlignment="Center" Alignment="VerticalCenter"></Text>
+											<Rectangle Fill="#d13200" Width="100%" Height="100%" CornerRadius="100"></Rectangle>
+										</Panel>
+									</Case>
+									<Case String="LATER">
+										<Panel Margin="0,35,20,0"  Width="65" Height="25" Alignment="TopRight" >
+											<Text FontSize="10" Font="gBold" TextColor="#ffffff" Opacity="0.9"  Value="LATER" TextAlignment="Center" Alignment="VerticalCenter"></Text>
+											<Rectangle Fill="#FCCC1C" Width="100%" Height="100%" CornerRadius="100"></Rectangle>
+										</Panel>
+									</Case>
+									<Case String="LIVE">
+										<Panel Margin="0,35,20,0"  Width="60" Height="25" Alignment="TopRight" >
+											<Text FontSize="10" Font="gBold" TextColor="#ffffff" Opacity="0.9"  Value="LIVE" TextAlignment="Center" Alignment="VerticalCenter"></Text>
+											<Rectangle Fill="#40d47e" Width="100%" Height="100%" CornerRadius="100"></Rectangle>
+										</Panel>
+									</Case>
+								</Match>
+								<Rectangle Alignment="Bottom" Width="100%" Height="1" Background="#e6e6e6"/>
+								<WhilePressed>
+										<Change tvItem.Background="#E6E6E6"/>
+								</WhilePressed>
+								<Clicked>
+										<Callback Handler="{tvListHandler}"/>
+										<Set stateGroupTv.Active="tvL2"/>
+								</Clicked>
+							</Panel>
+							</Each>
+					</StackPanel>
+					</ScrollView>
+				</StackPanel>
+				<ScrollingAnimation From="0" To="300">
+					<Move Target="tvTitle" Y="-0.5" RelativeTo="Size" />
+					<Change Target="tvTitle.Opacity" Value="0" Easing="QuadraticInOut"/>
+					<Change tvContentScroll.IsEnabled="true"/>
+				</ScrollingAnimation>
+			</ScrollView>
+
+			<StateGroup ux:Name="stateGroupTv">
+				<State ux:Name="tvL0">
+					<Move Target="tvTitle" Y="0" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.3" Delay="0.2"/>
+					<Move Target="tvContentScroll" Y="0" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.3" Delay="0.2"/>
+					<Move Target="tvContent" Y="0" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.3" Delay="0.2"/>
+					<Move Target="tvPanel" X="0" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.5"/>
+					<Move Target="tvDetail" X="0" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.5"/>
+				</State>
+				<State ux:Name="tvL1">
+					<Move Target="tvTitle" Y="-1.5" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.5" />
+					<Move Target="tvContentScroll" Y="1.5" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.5"/>
+					<Move Target="tvContent" Y="10" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.5"/>
+					<Move Target="tvPanel" X="1" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.3" Delay="0.2" />
+				</State>
+				<State ux:Name="tvL2">
+					<Move Target="tvTitle" Y="-1.5" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.5" />
+					<Move Target="tvContentScroll" Y="1.5" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.5"/>
+					<Move Target="tvContent" Y="10" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.5"/>
+					<Move Target="tvDetail" X="1" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.3" Delay="0.2" />
+				</State>
+		</StateGroup>
+
+
+
+
+			<Panel  ux:Name="tvPanel" Width="100%" Height="100%" Layer="Overlay" Alignment="VerticalCenter" X="-100%">
+				<StackPanel Width="90%" Alignment="TopCenter" Height="100%" Padding="0,0,0,-150">
+						<Panel Height="150" >
+							<StackPanel >
+								<Text FontSize="25" Font="gBold" TextAlignment="Center" TextColor="#fff" Value="Upcoming Episodes" Margin="0,60,0,0">
+									<Clicked>
+											<Set stateGroupTv.Active="tvL0"/>
+									</Clicked>
+								</Text>
+								<Text FontSize="16" Font="gMedium" TextAlignment="Center" Opacity="0.8" TextColor="#fff" Value="" Margin="0,15,0,0"></Text>
+							</StackPanel>
+						</Panel>
+						<StackPanel>
+							<Panel  Width="100%" Height="50">
+								<Text  Alignment="VerticalCenter" FontSize="16" Font="gMedium" Padding="0,0,0,0" TextAlignment="Center" TextColor="#212121" Opacity="0.5">releases in the next 5 days</Text>
+								<Rectangle Width="100%" Height="50" Fill="#fff" CornerRadius="5"/>
+							</Panel>
+							<ScrollView Width="100%" Height="1000" Background="#fff" Margin="0,-10,0,0" Padding="0,0,0,570">
+								<StackPanel>
+									<Each Items="{tvDataUpcoming}">
+										<Panel>
+										<Match Value="{status}">
+											<Case String="SOON">
+												<Panel ux:Name="tvItem" Background="#F5F5F5" Height="130" Margin="0,0,0,0">
+													<Text  Alignment="TopLeft" FontSize="15" Font="gMedium" Padding="20,40,90,0" TextAlignment="Left" TextColor="#212121" Value="{name}"></Text>
+													<Text  Alignment="TopLeft" FontSize="14" Font="gMedium" Padding="20,70,20,0" TextAlignment="Left" TextColor="#212121" Value="{desc}" Opacity="0.5"></Text>
+													<Text  Alignment="TopLeft" FontSize="14" Font="gMedium" Padding="20,100,0,0" TextAlignment="Left" TextColor="#212121" Value="{date}" Opacity="0.8"></Text>
+													<Panel Margin="0,35,20,0"  Width="65" Height="25" Alignment="TopRight" >
+														<Text FontSize="10" Font="gBold" TextColor="#ffffff" Opacity="0.9"  Value="{daysTo}" TextAlignment="Center" Alignment="VerticalCenter"></Text>
+														<Rectangle Fill="#E62878" Width="100%" Height="100%" CornerRadius="100"></Rectangle>
+													</Panel>
+													<Rectangle Alignment="Bottom" Width="100%" Height="1" Background="#e6e6e6"/>
+													<WhilePressed>
+															<Change tvItem.Background="#E6E6E6"/>
+													</WhilePressed>
+													<DoubleClicked>
+															<Callback Handler="{addNativeEvent}"/>
+													</DoubleClicked>
+												</Panel>
+											</Case>
+										</Match>
+										</Panel>
+									</Each>
+								</StackPanel>
+							</ScrollView>
+						</StackPanel>
+					</StackPanel>
+
+			</Panel>
+
+
+
+
+			<Panel  ux:Name="tvDetail" Width="100%" Height="100%" Layer="Overlay" Alignment="VerticalCenter" X="-100%">
+				<StackPanel Width="90%" Alignment="TopCenter" Height="100%" Padding="0,0,0,-150">
+						<Panel Height="210" >
+							<StackPanel >
+								<Text Width="100%" FontSize="25" Font="gBold" TextAlignment="Center" TextColor="#fff" Value="{tTitle}" TextWrapping="Wrap" Margin="0,60,0,0">
+									<Clicked>
+											<Set stateGroupTv.Active="tvL0"/>
+									</Clicked>
+								</Text>
+
+								<Panel ux:Name="addPin1" Width="100%" Height="50"  Margin="0,20,0,0" >
+								<Text ux:Name="pinContent" Alignment="VerticalCenter" FontSize="16" Font="gBold" Padding="0,0,0,0" TextAlignment="Center" TextColor="#fff" Value="FAVOURITE"></Text>
+								<Rectangle Width="70%" Height="100%" Fill="#E62878" Alignment="Center" CornerRadius="100"></Rectangle>
+								<WhilePressed>
+										<Change addPin1.Opacity="0.9" Duration="0.1" Easing="CircularIn" />
+								</WhilePressed>
+								<Clicked>
+										 <Callback Handler="{pinHandler}"/>
+
+								</Clicked>
+								</Panel>
+							</StackPanel>
+						</Panel>
+						<StackPanel>
+							<Panel  Width="100%" Height="50">
+								<Text  Alignment="VerticalCenter" FontSize="16" Font="gMedium" Padding="0,0,0,0" TextAlignment="Center" TextColor="#212121" Opacity="0.5" Value="{tSeason}"></Text>
+								<Rectangle Width="100%" Height="50" Fill="#fff" CornerRadius="5"/>
+							</Panel>
+							<ScrollView Width="100%" Height="1000" Background="#fff" Margin="0,-10,0,0" Padding="0,0,0,800">
+								<StackPanel>
+									<StackPanel Alignment="Top">
+											<Each Items="{tEpisodesPast}">
+											<Panel ux:Name="tvListClicked" Background="#F5F5F5" Margin="0,0,0,0">
+																<Text  Alignment="TopLeft" FontSize="15" Font="gMedium" Padding="20,40,90,0" TextAlignment="Left" TextColor="#212121" Value="{episode}" Opacity="0.5"></Text>
+																<Text  Alignment="TopLeft" FontSize="15" Font="gMedium" Padding="20,70,20,0" TextAlignment="Left" TextColor="#212121" Value="{desc}" Opacity="0.5"></Text>
+																<Text  Alignment="TopLeft" FontSize="14" Font="gMedium" Padding="20,100,20,20" TextAlignment="Left" TextColor="#212121" TextWrapping="Wrap" Value="{date}" Opacity="0.5"></Text>
+
+																<Rectangle Alignment="Bottom" Width="100%" Height="1" Background="#e6e6e6"/>
+											</Panel>
+											</Each>
+										</StackPanel>
+										<StackPanel>
+											<Each Items="{tEpisodesFuture}">
+													<Panel ux:Name="tvListClicker" Background="#F5F5F5" Margin="0,0,0,0" >
+																<Text  Alignment="TopLeft" FontSize="15" Font="gMedium" Padding="20,40,90,0" TextAlignment="Left" TextColor="#212121" Value="{episode}"></Text>
+																<Text  Alignment="TopLeft" FontSize="15" Font="gMedium" Padding="20,70,20,0" TextAlignment="Left" TextColor="#212121" Value="{desc}" Opacity="0.5"></Text>
+																<Text  Alignment="TopLeft" FontSize="14" Font="gMedium" Padding="20,100,20,20" TextAlignment="Left" TextColor="#212121" TextWrapping="Wrap" Value="{date}" Opacity="0.8"></Text>
+
+																<Rectangle Alignment="Bottom" Width="100%" Height="1" Background="#e6e6e6"/>
+																<WhilePressed>
+																		<Change tvListClicker.Background="#E6E6E6"/>
+																</WhilePressed>
+												</Panel>
+										</Each>
+									</StackPanel>
+								</StackPanel>
+							</ScrollView>
+						</StackPanel>
+					</StackPanel>
+
+			</Panel>
+
+			<OnBackButton>
+					<Set stateGroupTv.Active="tvL0"/>
+			</OnBackButton>
+
+		</Page>
+
+
+
+
+		<!-- Sports Page  -->
+
+
+		<Page ux:Name="sports" Background="#000">
+			<Image File="Assets/SportsCover.png" Layer="Background" StretchMode="UniformToFill" Opacity="0.65" />
+			<ScrollView Width="90%" Alignment="TopCenter" Height="100%">
+				<StackPanel>
+					<Panel Height="350" Alignment="Center" Width="100%">
+						<StackPanel ux:Name="sportTitle">
+							<Text FontSize="28" Font="gBold" TextAlignment="Center" TextColor="#fff" Value="Sports Leagues" Margin="0,160,0,0"></Text>
+							<Text FontSize="18" Font="gMedium" TextAlignment="Center" Opacity="0.8" TextColor="#fff" Value="tournaments and championships" Margin="0,15,0,0"></Text>
+							<Panel ux:Name="curiousBtn3" Width="100%" Height="50"  Margin="0,30,0,0">
+							<Text  Alignment="VerticalCenter" FontSize="16" Font="gBold" Padding="0,0,0,0" TextAlignment="Center" TextColor="#fff">UPCOMING EVENTS</Text>
+							<Rectangle Width="70%" Height="100%" Fill="#4CBC67" Alignment="Center" CornerRadius="100"></Rectangle>
+							<WhilePressed>
+									<Change curiousBtn3.Opacity="0.9" Duration="0.1" Easing="CircularIn" />
+							</WhilePressed>
+							<Clicked>
+									 <Set stateGroupSport.Active="sportL1"/>
+							</Clicked>
+							</Panel>
+						</StackPanel>
+					</Panel>
+						<Panel ux:Name="sportContent" Width="100%" Height="50">
+							<Text  Alignment="VerticalCenter" FontSize="16" Font="gMedium" Padding="20,0,0,0" TextAlignment="Left" TextColor="#212121" Opacity="0.5">events shows this year</Text>
+							<Rectangle Width="100%" Height="50" Fill="#fff" CornerRadius="5"/>
+						</Panel>
+
+						<ScrollView ux:Name="sportContentScroll" Height="550" Margin="0,-10,0,0" Background="#fff" CachingMode="Optimized" IsEnabled="false" Padding="0,0,0,50">
+						<StackPanel>
+							<Each Items="{sportDataMod}">
+							<Panel ux:Name="sportItem" Background="#F5F5F5" Height="110" Margin="0,0,0,0" >
+								<Text  Alignment="TopLeft" FontSize="15" Font="gMedium" Padding="20,40,90,0" TextAlignment="Left" TextColor="#212121" Value="{name}"></Text>
+								<Text  Alignment="TopLeft" FontSize="14" Font="gMedium" Padding="20,70,0,0" TextAlignment="Left" TextColor="#212121" Value="{sport}" Opacity="0.5"></Text>
+								<Match Value="{status}">
+									<Case String="PAST">
+										<Panel Margin="0,35,20,0"  Width="60" Height="25" Alignment="TopRight" >
+											<Text FontSize="10" Font="gBold" TextColor="#ffffff" Opacity="0.9"  Value="PAST" TextAlignment="Center" Alignment="VerticalCenter"></Text>
+											<Rectangle Fill="#d13200" Width="100%" Height="100%" CornerRadius="100"></Rectangle>
+										</Panel>
+									</Case>
+									<Case String="LATER">
+										<Panel Margin="0,35,20,0"  Width="65" Height="25" Alignment="TopRight" >
+											<Text FontSize="10" Font="gBold" TextColor="#ffffff" Opacity="0.9"  Value="LATER" TextAlignment="Center" Alignment="VerticalCenter"></Text>
+											<Rectangle Fill="#FCCC1C" Width="100%" Height="100%" CornerRadius="100"></Rectangle>
+										</Panel>
+									</Case>
+									<Case String="LIVE">
+										<Panel Margin="0,35,20,0"  Width="60" Height="25" Alignment="TopRight" >
+											<Text FontSize="10" Font="gBold" TextColor="#ffffff" Opacity="0.9"  Value="LIVE" TextAlignment="Center" Alignment="VerticalCenter"></Text>
+											<Rectangle Fill="#40d47e" Width="100%" Height="100%" CornerRadius="100"></Rectangle>
+										</Panel>
+									</Case>
+								</Match>
+								<Rectangle Alignment="Bottom" Width="100%" Height="1" Background="#e6e6e6"/>
+								<WhilePressed>
+										<Change sportItem.Background="#E6E6E6"/>
+								</WhilePressed>
+								<Clicked>
+										<Callback Handler="{sportListHandler}"/>
+										<Set stateGroupSport.Active="sportL2"/>
+								</Clicked>
+							</Panel>
+							</Each>
+					</StackPanel>
+					</ScrollView>
+				</StackPanel>
+				<ScrollingAnimation From="0" To="300">
+					<Move Target="sportTitle" Y="-0.5" RelativeTo="Size" />
+					<Change Target="sportTitle.Opacity" Value="0" Easing="QuadraticInOut"/>
+					<Change sportContentScroll.IsEnabled="true"/>
+				</ScrollingAnimation>
+			</ScrollView>
+
+			<StateGroup ux:Name="stateGroupSport">
+				<State ux:Name="sportL0">
+					<Move Target="sportTitle" Y="0" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.3" Delay="0.2"/>
+					<Move Target="sportContentScroll" Y="0" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.3" Delay="0.2"/>
+					<Move Target="sportContent" Y="0" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.3" Delay="0.2"/>
+					<Move Target="sportPanel" X="0" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.5"/>
+					<Move Target="sportDetail" X="0" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.5"/>
+				</State>
+				<State ux:Name="sportL1">
+					<Move Target="sportTitle" Y="-1.5" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.5" />
+					<Move Target="sportContentScroll" Y="1.5" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.5"/>
+					<Move Target="sportContent" Y="10" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.5"/>
+					<Move Target="sportPanel" X="1" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.3" Delay="0.2" />
+				</State>
+				<State ux:Name="sportL2">
+					<Move Target="sportTitle" Y="-1.5" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.5" />
+					<Move Target="sportContentScroll" Y="1.5" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.5"/>
+					<Move Target="sportContent" Y="10" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.5"/>
+					<Move Target="sportDetail" X="1" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.3" Delay="0.2" />
+				</State>
+		</StateGroup>
+
+
+
+
+			<Panel  ux:Name="sportPanel" Width="100%" Height="100%" Layer="Overlay" Alignment="VerticalCenter" X="-100%">
+				<StackPanel Width="90%" Alignment="TopCenter" Height="100%" Padding="0,0,0,-150">
+						<Panel Height="150" >
+							<StackPanel >
+								<Text FontSize="25" Font="gBold" TextAlignment="Center" TextColor="#fff" Value="Upcoming Events" Margin="0,60,0,0">
+									<Clicked>
+											<Set stateGroupSport.Active="sportL0"/>
+									</Clicked>
+								</Text>
+								<Text FontSize="16" Font="gMedium" TextAlignment="Center" Opacity="0.8" TextColor="#fff" Value="" Margin="0,15,0,0"></Text>
+							</StackPanel>
+						</Panel>
+						<StackPanel>
+							<Panel  Width="100%" Height="50" Clicked="{pinHandler}"	>
+								<Text  Alignment="VerticalCenter" FontSize="16" Font="gMedium" Padding="0,0,0,0" TextAlignment="Center" TextColor="#212121" Opacity="0.5">events in the next 2 days</Text>
+								<Rectangle Width="100%" Height="50" Fill="#fff" CornerRadius="5"/>
+							</Panel>
+							<ScrollView Width="100%" Height="1000" Background="#fff" Margin="0,-10,0,0" Padding="0,0,0,570">
+								<StackPanel>
+									<Each Items="{sportDataUpcoming}">
+										<Panel>
+										<Match Value="{status}">
+											<Case String="SOON">
+												<Panel ux:Name="sportItem" Background="#F5F5F5" Height="130" Margin="0,0,0,0">
+													<Text  Alignment="TopLeft" FontSize="15" Font="gMedium" Padding="20,40,90,0" TextAlignment="Left" TextColor="#212121" Value="{name}"></Text>
+													<Text  Alignment="TopLeft" FontSize="14" Font="gMedium" Padding="20,70,20,0" TextAlignment="Left" TextColor="#212121" Value="{title}" Opacity="0.5"></Text>
+													<Text  Alignment="TopLeft" FontSize="14" Font="gMedium" Padding="20,100,0,0" TextAlignment="Left" TextColor="#212121" Value="{date}" Opacity="0.8"></Text>
+													<Panel Margin="0,35,20,0"  Width="65" Height="25" Alignment="TopRight"  >
+														<Text FontSize="10" Font="gBold" TextColor="#ffffff" Opacity="0.9"  Value="{daysTo}" TextAlignment="Center" Alignment="VerticalCenter"></Text>
+														<Rectangle Fill="#4CBC67" Width="100%" Height="100%" CornerRadius="100"></Rectangle>
+													</Panel>
+													<Rectangle Alignment="Bottom" Width="100%" Height="1" Background="#e6e6e6"/>
+													<WhilePressed>
+															<Change sportItem.Background="#E6E6E6"/>
+													</WhilePressed>
+													<DoubleClicked>
+															<Callback Handler="{addNativeEvent}"/>
+													</DoubleClicked>
+
+												</Panel>
+											</Case>
+										</Match>
+										</Panel>
+									</Each>
+								</StackPanel>
+							</ScrollView>
+						</StackPanel>
+					</StackPanel>
+
+			</Panel>
+
+
+
+
+			<Panel  ux:Name="sportDetail" Width="100%" Height="100%" Layer="Overlay" Alignment="VerticalCenter" X="-100%">
+				<StackPanel Width="90%" Alignment="TopCenter" Height="100%" Padding="0,0,0,-150">
+						<Panel Height="210" >
+							<StackPanel >
+								<Text Width="100%" FontSize="25" Font="gBold" TextAlignment="Center" TextColor="#fff" Value="{sTitle}" TextWrapping="Wrap" Margin="0,60,0,0">
+									<Clicked>
+											<Set stateGroupSport.Active="sportL0"/>
+									</Clicked>
+								</Text>
+								<Panel ux:Name="addPin2" Width="100%" Height="50"  Margin="0,20,0,0" >
+								<Text ux:Name="pinContent1" Alignment="VerticalCenter" FontSize="16" Font="gBold" Padding="0,0,0,0" TextAlignment="Center" TextColor="#fff" Value="FAVOURITE"></Text>
+								<Rectangle Width="70%" Height="100%" Fill="#4CBC67" Alignment="Center" CornerRadius="100"></Rectangle>
+								<WhilePressed>
+										<Change addPin2.Opacity="0.9" Duration="0.1" Easing="CircularIn" />
+								</WhilePressed>
+								<Clicked>
+										 <Callback Handler="{pinHandler}"/>
+
+								</Clicked>
+								</Panel>
+							</StackPanel>
+						</Panel>
+						<StackPanel>
+							<Panel  Width="100%" Height="50">
+								<Text  Alignment="VerticalCenter" FontSize="16" Font="gMedium" Padding="0,0,0,0" TextAlignment="Center" TextColor="#212121" Opacity="0.5" Value="{sSport}"></Text>
+								<Rectangle Width="100%" Height="50" Fill="#fff" CornerRadius="5"/>
+							</Panel>
+							<ScrollView Width="100%" Height="1000" Background="#fff" Margin="0,-10,0,0" Padding="0,0,0,800">
+								<StackPanel>
+									<StackPanel Alignment="Top">
+											<Each Items="{sEpisodesPast}">
+											<Panel Background="#F5F5F5" Margin="0,0,0,0" >
+																<Text  Alignment="TopLeft" FontSize="15" Font="gMedium" Padding="20,40,90,0" TextAlignment="Left" TextColor="#212121" Value="{title}" Opacity="0.5"></Text>
+																<Text  Alignment="TopLeft" FontSize="15" Font="gMedium" Padding="20,70,20,20" TextAlignment="Left" TextColor="#212121" Value="{date}" Opacity="0.5"></Text>
+
+																<Rectangle Alignment="Bottom" Width="100%" Height="1" Background="#e6e6e6"/>
+											</Panel>
+											</Each>
+									</StackPanel>
+									<StackPanel>
+										<Each Items="{sEpisodesFuture}">
+										<Panel ux:Name="sportListClicker" Background="#F5F5F5" Margin="0,0,0,0" Clicked="{pinHandler}">
+																<Text  Alignment="TopLeft" FontSize="15" Font="gMedium" Padding="20,40,90,0" TextAlignment="Left" TextColor="#212121" Value="{title}"></Text>
+																<Text  Alignment="TopLeft" FontSize="15" Font="gMedium" Padding="20,70,20,20" TextAlignment="Left" TextColor="#212121" Value="{date}" Opacity="0.5"></Text>
+																<Rectangle Alignment="Bottom" Width="100%" Height="1" Background="#e6e6e6"/>
+																<WhilePressed>
+																		<Change sportListClicker.Background="#E6E6E6"/>
+																</WhilePressed>
+										</Panel>
+										</Each>
+									</StackPanel>
+								</StackPanel>
+							</ScrollView>
+						</StackPanel>
+					</StackPanel>
+
+			</Panel>
+
+			<OnBackButton>
+					<Set stateGroupSport.Active="sportL0"/>
+			</OnBackButton>
+
+		</Page>
+
+
+
+		<!-- Holidays Page  -->
+
+
+				<Page ux:Name="holidays" Background="#000">
+					<Image File="Assets/HolidayCover.png" Layer="Background" StretchMode="UniformToFill" Opacity="0.65" />
+					<ScrollView Width="90%" Alignment="TopCenter" Height="100%">
+						<StackPanel>
+							<Panel Height="350" Alignment="Center" Width="100%">
+								<StackPanel ux:Name="countryTitle">
+									<Text FontSize="28" Font="gBold" TextAlignment="Center" TextColor="#fff" Value="National Holidays" Margin="0,160,0,0"></Text>
+									<Text FontSize="18" Font="gMedium" TextAlignment="Center" Opacity="0.8" TextColor="#fff" Value="public and national observances" Margin="0,15,0,0"></Text>
+									<Panel ux:Name="curiousBtn4" Width="100%" Height="50"  Margin="0,30,0,0">
+									<Text  Alignment="VerticalCenter" FontSize="16" Font="gBold" Padding="0,0,0,0" TextAlignment="Center" TextColor="#fff">UPCOMING HOLIDAYS</Text>
+									<Rectangle Width="70%" Height="100%" Fill="#0EA2F8" Alignment="Center" CornerRadius="100"></Rectangle>
+									<WhilePressed>
+											<Change curiousBtn4.Opacity="0.9" Duration="0.1" Easing="CircularIn" />
+									</WhilePressed>
+									<Clicked>
+											 <Set stateGroupCountry.Active="countryL1"/>
+									</Clicked>
+									</Panel>
+								</StackPanel>
+							</Panel>
+								<Panel ux:Name="countryContent" Width="100%" Height="50">
+									<Text  Alignment="VerticalCenter" FontSize="16" Font="gMedium" Padding="20,0,0,0" TextAlignment="Left" TextColor="#212121" Opacity="0.5">country list and its holidays</Text>
+									<Rectangle Width="100%" Height="50" Fill="#fff" CornerRadius="5"/>
+								</Panel>
+
+								<ScrollView ux:Name="countryContentScroll" Height="550" Margin="0,-10,0,0" Background="#fff" CachingMode="Optimized" IsEnabled="false" Padding="0,0,0,50">
+								<StackPanel>
+									<Each Items="{countryDataMod}">
+									<Panel ux:Name="countryItem" Background="#F5F5F5" Height="80" Margin="0,0,0,0">
+										<Text  Alignment="TopLeft" FontSize="15" Font="gMedium" Padding="20,40,90,20" TextAlignment="Left" TextColor="#212121" Value="{name}"></Text>
+
+										<Rectangle Alignment="Bottom" Width="100%" Height="1" Background="#e6e6e6"/>
+										<WhilePressed>
+												<Change countryItem.Background="#E6E6E6"/>
+										</WhilePressed>
+										<Clicked>
+												<Callback Handler="{countryListHandler}"/>
+												<Set stateGroupCountry.Active="countryL2"/>
+										</Clicked>
+									</Panel>
+									</Each>
+							</StackPanel>
+							</ScrollView>
+						</StackPanel>
+						<ScrollingAnimation From="0" To="300">
+							<Move Target="countryTitle" Y="-0.5" RelativeTo="Size" />
+							<Change Target="countryTitle.Opacity" Value="0" Easing="QuadraticInOut"/>
+							<Change countryContentScroll.IsEnabled="true"/>
+						</ScrollingAnimation>
+					</ScrollView>
+
+					<StateGroup ux:Name="stateGroupCountry">
+						<State ux:Name="countryL0">
+							<Move Target="countryTitle" Y="0" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.3" Delay="0.2"/>
+							<Move Target="countryContentScroll" Y="0" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.3" Delay="0.2"/>
+							<Move Target="countryContent" Y="0" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.3" Delay="0.2"/>
+							<Move Target="countryPanel" X="0" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.5"/>
+							<Move Target="countryDetail" X="0" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.5"/>
+						</State>
+						<State ux:Name="countryL1">
+							<Move Target="countryTitle" Y="-1.5" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.5" />
+							<Move Target="countryContentScroll" Y="1.5" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.5"/>
+							<Move Target="countryContent" Y="10" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.5"/>
+							<Move Target="countryPanel" X="1" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.3" Delay="0.2" />
+						</State>
+						<State ux:Name="countryL2">
+							<Move Target="countryTitle" Y="-1.5" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.5" />
+							<Move Target="countryContentScroll" Y="1.5" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.5"/>
+							<Move Target="countryContent" Y="10" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.5"/>
+							<Move Target="countryDetail" X="1" RelativeTo="Size" Easing="QuadraticInOut" Duration="0.3" Delay="0.2" />
+						</State>
+				</StateGroup>
+
+
+
+
+					<Panel  ux:Name="countryPanel" Width="100%" Height="100%" Layer="Overlay" Alignment="VerticalCenter" X="-100%">
+						<StackPanel Width="90%" Alignment="TopCenter" Height="100%" Padding="0,0,0,-150">
+								<Panel Height="150" >
+									<StackPanel >
+										<Text FontSize="25" Font="gBold" TextAlignment="Center" TextColor="#fff" Value="Upcoming Events" Margin="0,60,0,0">
+											<Clicked>
+													<Set stateGroupCountry.Active="countryL0"/>
+											</Clicked>
+										</Text>
+										<Text FontSize="16" Font="gMedium" TextAlignment="Center" Opacity="0.8" TextColor="#fff" Value="" Margin="0,15,0,0"></Text>
+									</StackPanel>
+								</Panel>
+								<StackPanel>
+									<Panel  Width="100%" Height="50">
+										<Text  Alignment="VerticalCenter" FontSize="16" Font="gMedium" Padding="0,0,0,0" TextAlignment="Center" TextColor="#212121" Opacity="0.5">holidays from major countries</Text>
+										<Rectangle Width="100%" Height="50" Fill="#fff" CornerRadius="5"/>
+									</Panel>
+									<ScrollView Width="100%" Height="1000" Background="#fff" Margin="0,-10,0,0" Padding="0,0,0,570">
+										<StackPanel>
+											<Each Items="{countryDataUpcoming}">
+												<Panel>
+												<Match Value="{status}">
+													<Case String="SOON">
+														<Panel ux:Name="countryItem" Background="#F5F5F5" Height="130" Margin="0,0,0,0">
+															<Text  Alignment="TopLeft" FontSize="15" Font="gMedium" Padding="20,40,90,0" TextAlignment="Left" TextColor="#212121" Value="{name}"></Text>
+															<Text  Alignment="TopLeft" FontSize="14" Font="gMedium" Padding="20,70,20,0" TextAlignment="Left" TextColor="#212121" Value="{title}" Opacity="0.5"></Text>
+															<Text  Alignment="TopLeft" FontSize="14" Font="gMedium" Padding="20,100,0,0" TextAlignment="Left" TextColor="#212121" Value="{date}" Opacity="0.8"></Text>
+															<Panel Margin="0,35,20,0"  Width="65" Height="25" Alignment="TopRight" >
+																<Text FontSize="10" Font="gBold" TextColor="#ffffff" Opacity="0.9"  Value="{daysTo}" TextAlignment="Center" Alignment="VerticalCenter"></Text>
+																<Rectangle Fill="#0EA2F8" Width="100%" Height="100%" CornerRadius="100"></Rectangle>
+															</Panel>
+															<Rectangle Alignment="Bottom" Width="100%" Height="1" Background="#e6e6e6"/>
+															<WhilePressed>
+																	<Change countryItem.Background="#E6E6E6"/>
+															</WhilePressed>
+															<DoubleClicked>
+																	<Callback Handler="{addNativeEvent}"/>
+															</DoubleClicked>
+														</Panel>
+													</Case>
+												</Match>
+												</Panel>
+											</Each>
+										</StackPanel>
+									</ScrollView>
+								</StackPanel>
+							</StackPanel>
+
+					</Panel>
+
+					<Panel  ux:Name="countryDetail" Width="100%" Height="100%" Layer="Overlay" Alignment="VerticalCenter" X="-100%">
+						<StackPanel Width="90%" Alignment="TopCenter" Height="100%" Padding="0,0,0,-150">
+								<Panel Height="210" >
+									<StackPanel >
+										<Text Width="100%" FontSize="25" Font="gBold" TextAlignment="Center" TextColor="#fff" Value="{cTitle}" TextWrapping="Wrap" Margin="0,60,0,0">
+											<Clicked>
+													<Set stateGroupCountry.Active="countryL0"/>
+
+											</Clicked>
+										</Text>
+										<Panel ux:Name="addPin3" Width="100%" Height="50"  Margin="0,20,0,0" >
+										<Text  ux:Name="pinContent2" Alignment="VerticalCenter" FontSize="16" Font="gBold" Padding="0,0,0,0" TextAlignment="Center" TextColor="#fff" Value="FAVOURITE"></Text>
+										<Rectangle Width="70%" Height="100%" Fill="#0EA2F8" Alignment="Center" CornerRadius="100"></Rectangle>
+										<WhilePressed>
+												<Change addPin3.Opacity="0.9" Duration="0.1" Easing="CircularIn" />
+										</WhilePressed>
+										<Clicked>
+												 <Callback Handler="{pinHandler}"/>
+
+										</Clicked>
+										</Panel>
+									</StackPanel>
+								</Panel>
+								<StackPanel>
+									<Panel  Width="100%" Height="50">
+										<Text  Alignment="VerticalCenter" FontSize="16" Font="gMedium" Padding="0,0,0,0" TextAlignment="Center" TextColor="#212121" Opacity="0.5" Value="public and national holidays"></Text>
+										<Rectangle Width="100%" Height="50" Fill="#fff" CornerRadius="5"/>
+									</Panel>
+									<ScrollView Width="100%" Height="1000" Background="#fff" Margin="0,-10,0,0" Padding="0,0,0,800">
+											<StackPanel>
+												<Each Items="{cEpisodes}">
+
+														<Panel ux:Name="countryListClicked" Background="#F5F5F5" Margin="0,0,0,0">
+																		<Text  Alignment="TopLeft" FontSize="15" Font="gMedium" Padding="20,40,90,0" TextAlignment="Left" TextColor="#212121" Value="{title}" ></Text>
+																		<Text  Alignment="TopLeft" FontSize="15" Font="gMedium" Padding="20,70,20,20" TextAlignment="Left" TextColor="#212121" Value="{date}" Opacity="0.5"></Text>
+
+																		<Rectangle Alignment="Bottom" Width="100%" Height="1" Background="#e6e6e6"/>
+																		<WhilePressed>
+																				<Change countryListClicked.Background="#E6E6E6"/>
+																		</WhilePressed>
+													 </Panel>
+
+												</Each>
+
+									</StackPanel>
+
+									</ScrollView>
+								</StackPanel>
+							</StackPanel>
+
+					</Panel>
+
+					<OnBackButton>
+							<Set stateGroupCountry.Active="countryL0"/>
+					</OnBackButton>
+
+			</Page>
+
+
+
+	</PageControl>
+
+</DockPanel>
+<OnBackButton>
+		<NavigateTo Target="home"/>
+</OnBackButton>
+</App>

@@ -1,0 +1,7 @@
+/usr/local/share/uno/SDKs/AndroidNDK
+9
+armeabi-v7a
+-O3 -DNDEBUG
+ -DDUK_F_32BIT_PTRS -DDUK_F_USE_REPL_ALL
+ -I/usr/local/share/uno/Packages/Fuse.Scripting.V8/0.27.10 -I/usr/local/share/uno/Packages/UnoCore/0.27.15/Prebuilt/Android/include
+/usr/local/share/uno/SDKs/AndroidNDK/sources/cxx-stl/stlport/stlport

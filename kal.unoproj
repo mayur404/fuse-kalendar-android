@@ -1,0 +1,73 @@
+{
+  "RootNamespace":"",
+  "Version": "0.0.2",
+    "VersionCode": 2,
+    "Title": "Kalendar",
+    "Copyright": "Copyright (C) 2015",
+    "Publisher": "Little Boat Studios",
+    "Mobile": {
+        "KeepAlive": false,
+        "ShowStatusbar": false,
+        "RunsInBackground": false,
+        "Orientations": "Portrait"
+    },
+    "Android": {
+        "Package": "com.littleboat.kalendar",
+        "ApplicationLabel": "Kalendar",
+        "VersionCode": "0",
+        "VersionName": "Kalendar Release 1.1",
+        "Description": "",
+        "NDK": {
+            "PlatformVersion": 9
+        },
+        "SDK": {
+            "BuildToolsVersion": "23.0.0",
+            "CompileVersion": 21,
+            "MinVersion": 21,
+            "TargetVersion": 21
+        },
+        "Icons": {
+          "LDPI": "ldpi.png",
+          "MDPI": "mdpi.png",
+          "HDPI": "hdpi.png",
+          "XHDPI": "xhdpi.png",
+          "XXHDPI": "xxhdpi.png",
+          "XXXHDPI": "xxxhdpi.png"
+        },
+        "Key": {
+          "Alias": "application",
+          "AliasPassword": "bucky404",
+          "Store": "release.keystore",
+          "StorePassword": "bucky404"
+        }
+    },
+    "Packages": [
+        "Fuse.Animations",
+        "Fuse.BasicTheme",
+        "Fuse.Themes",
+        "Fuse.Controls",
+        "Fuse.Designer",
+        "Fuse.Drawing",
+        "Fuse.Drawing.Primitives",
+        "Fuse.Effects",
+        "Fuse.Elements",
+        "Fuse.Entities",
+        "Fuse.Gestures",
+        "Fuse.Navigation",
+        "Fuse.Shapes",
+        "Fuse.Triggers",
+        "Fuse.Reactive",
+        "Fuse.Android",
+        "Fuse.Desktop",
+        "Fuse.UserEvents",
+        "FuseCore",
+        "Uno.Collections",
+        "Uno.Geometry",
+        "Fuse.Scripting",
+        "Android"
+  ],
+  "Includes": [
+    "*",
+    "Data/*.js:Bundle"
+  ]
+}

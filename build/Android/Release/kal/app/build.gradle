@@ -1,0 +1,103 @@
+// This file was generated based on '/usr/local/share/uno/Packages/UnoCore/0.27.15/Targets/Android/kal/app/build.gradle'.
+// WARNING: Changes might be lost if you edit this file directly.
+apply plugin: 'com.android.model.application'
+
+//#if #(Gradle.Dependencies.Compile:IsRequired)
+//dependencies {
+//    #(Gradle.Dependencies.Compile:Join('\n', 'compile \'', '\''))
+//}
+//#endif
+
+task copySharedLibraries {
+    copy {
+        from '/usr/local/share/uno/Packages/Fuse.Scripting.V8/0.27.10/lib/Android/libV8Simple.so'
+        into file('src/main/jniLibs/armeabi-v7a')
+    }
+    copy {
+        from '/usr/local/share/uno/SDKs/AndroidNDK/sources/cxx-stl/stlport/libs/armeabi-v7a/libstlport_shared.so'
+        into file('src/main/jniLibs/armeabi-v7a')
+    }
+}
+
+build.dependsOn copySharedLibraries
+
+model {
+    repositories {
+        libs(PrebuiltLibraries) {
+            prebuilt {
+                binaries.withType(SharedLibraryBinary) {
+                    sharedLibraryFile = file('/usr/local/share/uno/Packages/Fuse.Scripting.V8/0.27.10/lib/Android/libV8Simple.so')
+                    sharedLibraryFile = file('/usr/local/share/uno/SDKs/AndroidNDK/sources/cxx-stl/stlport/libs/armeabi-v7a/libstlport_shared.so')
+                }
+            }
+        }
+//#if #(Gradle.Repository:IsRequired)
+//        #(Gradle.Repository:Join('\n        ', '\'', '\''))
+//#endif
+    }
+
+    android {
+        compileSdkVersion = 23 //21
+        buildToolsVersion = "23.0.0"
+
+        defaultConfig.with {
+            applicationId = "com.littleboat.kalendar"
+            minSdkVersion.apiLevel = 21
+            targetSdkVersion.apiLevel = 21
+            versionCode = 0
+            versionName = "Kalendar Release 1.1"
+        }
+    }
+
+//#if #(Project.Android.Key.Store:IsSet)
+    android.signingConfigs {
+        create("release") {
+            keyAlias = "application"
+            keyPassword = "bucky404"
+            storeFile = file("/Users/mayur404/Dropbox/Public/Little Boat/InHouse/BlackBerry/Kalendar/Priv/fuse/release.keystore")
+            storePassword = "bucky404"
+        }
+    }
+//#endif
+
+    android.ndk {
+        moduleName = "kal"
+        debuggable = false
+        platformVersion = 9
+        CFlags.addAll(["-std=c99"])
+        CFlags.addAll(["-I/Users/mayur404/Dropbox/Public/Little Boat/InHouse/BlackBerry/Kalendar/Priv/fuse/build/Android/Release/kal/app/src/main/include", "-I/usr/local/share/uno/Packages/Fuse.Scripting.V8/0.27.10", "-I/usr/local/share/uno/Packages/UnoCore/0.27.15/Prebuilt/Android/include"])
+        CFlags.addAll(["-DDUK_F_32BIT_PTRS", "-DDUK_F_USE_REPL_ALL"])
+        cppFlags.addAll(["-std=c++11", "-fexceptions", "-frtti", "-Wno-invalid-offsetof"])
+        cppFlags.addAll(["-I/Users/mayur404/Dropbox/Public/Little Boat/InHouse/BlackBerry/Kalendar/Priv/fuse/build/Android/Release/kal/app/src/main/include", "-I/usr/local/share/uno/Packages/Fuse.Scripting.V8/0.27.10", "-I/usr/local/share/uno/Packages/UnoCore/0.27.15/Prebuilt/Android/include"])
+        cppFlags.addAll(["-DDUK_F_32BIT_PTRS", "-DDUK_F_USE_REPL_ALL"])
+        ldFlags.addAll(["-L/usr/local/share/uno/Packages/Fuse.Scripting.V8/0.27.10/lib/Android", "-L/usr/local/share/uno/Packages/UnoCore/0.27.15/Prebuilt/Android/lib/armeabi-v7a", "-L/usr/local/share/uno/SDKs/AndroidNDK/sources/cxx-stl/stlport/libs/armeabi-v7a"])
+        ldLibs.addAll(["/usr/local/share/uno/Packages/UnoCore/0.27.15/Prebuilt/Android/lib/armeabi-v7a/libuImage.a", "/usr/local/share/uno/Packages/UnoCore/0.27.15/Prebuilt/Android/lib/armeabi-v7a/libpng.a", "/usr/local/share/uno/Packages/UnoCore/0.27.15/Prebuilt/Android/lib/armeabi-v7a/libjpeg.a", "/usr/local/share/uno/Packages/UnoCore/0.27.15/Prebuilt/Android/lib/armeabi-v7a/libfreetype.a", "/usr/local/share/uno/Packages/UnoCore/0.27.15/Prebuilt/Android/lib/armeabi-v7a/libXliMain.a", "/usr/local/share/uno/Packages/UnoCore/0.27.15/Prebuilt/Android/lib/armeabi-v7a/libXliPlatform.a", "/usr/local/share/uno/Packages/UnoCore/0.27.15/Prebuilt/Android/lib/armeabi-v7a/libuBase.a"])
+        ldLibs.addAll(["android", "EGL", "GLESv2", "log", "stlport_shared", "V8Simple", "z"])
+        stl = "stlport_shared"
+    }
+
+    android.sources {
+        main {
+            jni {
+                dependencies {
+                    library "prebuilt"
+                }
+            }
+        }
+    }
+
+    android.buildTypes {
+        release {
+            minifyEnabled = false
+            proguardFiles.add(file('proguard-rules.txt'))
+        }
+    }
+
+    android.productFlavors {
+        // for detailed abiFilter descriptions, refer to "Supported ABIs" @
+        // https://developer.android.com/ndk/guides/abis.html#sa
+        create("arm7") {
+            ndk.abiFilters.add("armeabi-v7a")
+        }
+    }
+}

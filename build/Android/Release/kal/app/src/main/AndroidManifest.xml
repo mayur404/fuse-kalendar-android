@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.littleboat.kalendar"
+          android:versionCode="2"
+          android:versionName="Kalendar Release 1.2">
+
+    <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="21" />
+    <uses-feature android:glEsVersion="0x00020000"/>
+
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+
+    <application android:label="Kalendar"
+
+                 android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+
+                 android:icon="@mipmap/icon"
+                 android:description="@string/description">
+
+        <activity android:name="kal"
+                  android:label="Kalendar"
+                  android:launchMode="singleTask"
+                  android:theme="@style/AppTheme"
+                  android:taskAffinity=""
+                  android:windowSoftInputMode="adjustResize"
+                  android:configChanges="orientation|keyboardHidden|screenSize|smallestScreenSize"
+
+android:screenOrientation="portrait"
+
+
+
+                  android:windowActionBar="false">
+            <meta-data android:name="android.app.lib_name" android:value="kal" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+
+
+
+
+
+
+
+        </activity>
+
+        <activity android:name="Android_android_app_Activity"></activity>
+
+
+
+
+
+    </application>
+</manifest>

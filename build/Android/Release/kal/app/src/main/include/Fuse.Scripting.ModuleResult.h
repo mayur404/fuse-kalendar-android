@@ -1,0 +1,45 @@
+// This file was generated based on '/usr/local/share/uno/Packages/Fuse.Scripting/0.27.10/$.uno'.
+// WARNING: Changes might be lost if you edit this file directly.
+
+#pragma once
+#include <Uno.Object.h>
+namespace g{namespace Fuse{namespace Scripting{struct Context;}}}
+namespace g{namespace Fuse{namespace Scripting{struct Module;}}}
+namespace g{namespace Fuse{namespace Scripting{struct ModuleResult;}}}
+namespace g{namespace Fuse{namespace Scripting{struct Object;}}}
+namespace g{namespace Uno{namespace Collections{struct List;}}}
+namespace g{namespace Uno{struct EventArgs;}}
+
+namespace g{
+namespace Fuse{
+namespace Scripting{
+
+// public sealed class ModuleResult :12
+// {
+uType* ModuleResult_typeof();
+void ModuleResult__ctor__fn(ModuleResult* __this, ::g::Fuse::Scripting::Context* context, uString* id, ::g::Fuse::Scripting::Module* mod, ::g::Fuse::Scripting::Object* obj);
+void ModuleResult__AddDependency_fn(ModuleResult* __this, uDelegate* invalidateCallback);
+void ModuleResult__Invalidate_fn(ModuleResult* __this);
+void ModuleResult__New1_fn(::g::Fuse::Scripting::Context* context, uString* id, ::g::Fuse::Scripting::Module* mod, ::g::Fuse::Scripting::Object* obj, ModuleResult** __retval);
+void ModuleResult__OnDataChanged_fn(ModuleResult* __this, uObject* sender, ::g::Uno::EventArgs* args);
+void ModuleResult__OnGlobalKeyChanged_fn(ModuleResult* __this, uString* key);
+
+struct ModuleResult : uObject
+{
+    bool _globalKeyListening;
+    uStrong< ::g::Uno::Collections::List*> _invalidateCallbacks;
+    uStrong< ::g::Fuse::Scripting::Context*> Context;
+    uStrong<uString*> Id;
+    uStrong< ::g::Fuse::Scripting::Module*> Module;
+    uStrong< ::g::Fuse::Scripting::Object*> Object;
+
+    void ctor_(::g::Fuse::Scripting::Context* context, uString* id, ::g::Fuse::Scripting::Module* mod, ::g::Fuse::Scripting::Object* obj);
+    void AddDependency(uDelegate* invalidateCallback);
+    void Invalidate();
+    void OnDataChanged(uObject* sender, ::g::Uno::EventArgs* args);
+    void OnGlobalKeyChanged(uString* key);
+    static ModuleResult* New1(::g::Fuse::Scripting::Context* context, uString* id, ::g::Fuse::Scripting::Module* mod, ::g::Fuse::Scripting::Object* obj);
+};
+// }
+
+}}} // ::g::Fuse::Scripting
